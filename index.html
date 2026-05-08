@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BEAUTY SPHERE DAG — официальный дистрибьютор премиальных брендов космецевтики для специалистов индустрии красоты. Каталог, обучение, семинары." />
+  <title>BEAUTY SPHERE — Professional Cosmetics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='4' height='32' fill='%23D4A5A5'/%3E%3C/svg%3E" />
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#/" class="logo" aria-label="BEAUTY SPHERE — на главную">
+        <span class="logo-bar"></span>
+        <span class="logo-text">
+          <span class="logo-name">BEAUTY SPHERE</span>
+          <span class="logo-sub">Professional Cosmetics</span>
+        </span>
+      </a>
+
+      <nav class="nav" id="siteNav">
+        <a href="#/catalog" data-route="catalog">Каталог</a>
+        <a href="#/brands" data-route="brands">Бренды</a>
+        <a href="#/seminars" data-route="seminars">Семинары</a>
+        <a href="#/about" data-route="about">О нас</a>
+        <a href="#/contacts" data-route="contacts">Контакты</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="searchBtn" aria-label="Поиск" title="Поиск">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a href="#/history" class="icon-btn" aria-label="История просмотров" title="История просмотров">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/><path d="M12 7v5l3 2"/></svg>
+        </a>
+        <a href="#/favorites" class="icon-btn icon-btn-badge" aria-label="Избранное" title="Избранное">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.6Z"/></svg>
+          <span class="badge" id="favBadge" hidden>0</span>
+        </a>
+        <a href="#/account" class="icon-btn" aria-label="Личный кабинет" title="Личный кабинет">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        </a>
+        <button class="icon-btn icon-btn-badge" id="cartBtn" aria-label="Корзина" title="Корзина">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4h2l2.7 12.3a2 2 0 0 0 2 1.7h7.6a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9" cy="21" r="1.5"/><circle cx="18" cy="21" r="1.5"/></svg>
+          <span class="badge" id="cartBadge" hidden>0</span>
+        </button>
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Меню">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="search-bar" id="searchBar" hidden>
+      <div class="container">
+        <input id="searchInput" type="search" placeholder="Поиск по бренду, категории, продукту…" autocomplete="off" />
+      </div>
+    </div>
+  </header>
+
+  <main id="view"></main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-bar"></span>
+          <span class="logo-text">
+            <span class="logo-name">BEAUTY SPHERE</span>
+            <span class="logo-sub">Professional Cosmetics</span>
+          </span>
+        </div>
+        <p>Официальный дистрибьютор премиальных брендов космецевтики для специалистов индустрии красоты с 2011 года.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Каталог</h4>
+        <ul>
+          <li><a href="#/catalog?cat=fillers">Филлеры</a></li>
+          <li><a href="#/catalog?cat=biorevitalization">Биоревитализация</a></li>
+          <li><a href="#/catalog?cat=mesotherapy">Мезотерапия</a></li>
+          <li><a href="#/catalog?cat=cosmeceuticals">Космецевтика</a></li>
+          <li><a href="#/catalog?cat=peelings">Пилинги</a></li>
+          <li><a href="#/catalog?cat=pla">PLA-препараты</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Компания</h4>
+        <ul>
+          <li><a href="#/about">О нас</a></li>
+          <li><a href="#/seminars">Семинары</a></li>
+          <li><a href="#/brands">Партнёрам</a></li>
+          <li><a href="#/contacts">Контакты</a></li>
+          <li><a href="#/account">Личный кабинет</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <ul>
+          <li><a href="tel:+79882933999">+7 988 293-39-99</a></li>
+          <li><a href="https://wa.me/79882933999" target="_blank" rel="noopener">WhatsApp менеджеру</a></li>
+          <li><a href="mailto:info@beautysphere.ru">info@beautysphere.ru</a></li>
+          <li><span>ул. Азиза Алиева, 18<br/>Махачкала, Дагестан</span></li>
+          <li><a href="https://instagram.com/beauty_spheree_dag" target="_blank" rel="noopener">@beauty_spheree_dag</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 Beauty Sphere DAG. Все права защищены.</p>
+      <div>
+        <a href="#/about">Политика конфиденциальности</a>
+        <a href="#/about">Оферта</a>
+      </div>
+    </div>
+  </footer>
+
+  <aside class="drawer" id="cartDrawer" aria-hidden="true">
+    <div class="drawer-backdrop" data-close></div>
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <h3>Корзина</h3>
+        <button class="icon-btn" data-close aria-label="Закрыть">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <div class="drawer-body" id="cartBody"></div>
+      <div class="drawer-foot" id="cartFoot"></div>
+    </div>
+  </aside>
+
+  <div class="modal" id="productModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <button class="icon-btn modal-close" data-close aria-label="Закрыть">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <a class="wa-fab" href="https://wa.me/79882933999" target="_blank" rel="noopener" title="Написать в WhatsApp">
+    <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9 3 3.5 8.5 3.5 15.4c0 2.5.7 4.8 2 6.9L3 29l6.9-2.4c2 1.1 4.3 1.7 6.6 1.7 7 0 12.5-5.5 12.5-12.4 0-3.3-1.3-6.4-3.7-8.8C22.4 4.3 19.3 3 16 3Zm0 22.6c-2 0-4-.5-5.7-1.6l-.4-.2-4.1 1.4 1.4-4-.3-.5C5.7 19 5 17.2 5 15.4 5 9.3 9.9 4.4 16 4.4c3 0 5.7 1.1 7.8 3.2 2.1 2 3.2 4.7 3.2 7.7 0 6.1-4.9 11-10.9 11Zm6.3-8.2c-.4-.2-2-1-2.4-1.1-.3-.1-.5-.2-.7.2-.2.4-.8 1-1 1.2-.2.2-.4.2-.7 0-2-1-3.3-1.7-4.6-3.9-.3-.5.3-.5.9-1.7.1-.2 0-.4 0-.5-.1-.2-.7-1.7-1-2.4-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.5 1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6 1.9.7 2.6.8 3.5.7.6-.1 2-.8 2.2-1.6.3-.8.3-1.5.2-1.6 0-.1-.3-.2-.7-.4Z"/></svg>
+  </a>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

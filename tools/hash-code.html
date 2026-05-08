@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BEAUTY SPHERE — генератор кодов доступа</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 40px 20px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #FDFCFB; color: #1A1514; line-height: 1.5; }
+    .wrap { max-width: 720px; margin: 0 auto; }
+    h1 { font-weight: 300; font-size: 32px; margin: 0 0 8px; }
+    h1 span { font-style: italic; color: #D4A5A5; }
+    p.lead { color: #6B5D57; margin: 0 0 32px; }
+    .card { background: #fff; border: 1px solid rgba(212,165,165,.18); padding: 28px; }
+    label { display: block; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: #6B5D57; margin-bottom: 8px; }
+    input { width: 100%; padding: 14px 16px; font-size: 16px; letter-spacing: .04em; border: 1px solid rgba(26,21,20,.12); background: #FDFCFB; outline: none; }
+    input:focus { border-color: #D4A5A5; }
+    .out { margin-top: 20px; padding: 16px; background: #F5F0EB; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; word-break: break-all; min-height: 48px; border: 1px dashed rgba(26,21,20,.12); }
+    .out strong { color: #1A1514; }
+    button { padding: 12px 24px; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; font-weight: 500; background: #1A1514; color: #FDFCFB; border: 0; cursor: pointer; margin-top: 12px; }
+    button:hover { background: rgba(26,21,20,.85); }
+    .copied { color: #2D7A3E; font-size: 12px; margin-left: 12px; }
+    h2 { font-size: 18px; font-weight: 500; margin: 32px 0 8px; }
+    ol { padding-left: 20px; margin: 0; }
+    ol li { margin-bottom: 8px; color: #6B5D57; font-size: 14px; }
+    code { background: #F5F0EB; padding: 2px 6px; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13px; }
+    .preview { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; padding: 16px; background: #1A1514; color: #FDFCFB; overflow-x: auto; margin-top: 12px; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Генератор <span>кодов</span> доступа</h1>
+  <p class="lead">Безопасно создаёт хэш для нового кода. Сам код в исходники не попадает — только хэш.</p>
+
+  <div class="card">
+    <label for="codeInput">Введите код, который вы будете давать клиенту</label>
+    <input id="codeInput" type="text" autocomplete="off" placeholder="Например: VIP-ANNA-2026" autofocus />
+    <div class="out" id="output"><em style="color:#6B5D57;">Здесь появится хэш…</em></div>
+    <button id="copyBtn">Скопировать хэш</button>
+    <span id="copiedMsg" class="copied" style="display:none;">✓ Скопировано</span>
+  </div>
+
+  <h2>Как добавить новый код</h2>
+  <ol>
+    <li>Введите код выше — он сразу превратится в SHA-256 хэш</li>
+    <li>Нажмите «Скопировать хэш»</li>
+    <li>Откройте файл <code>js/data.js</code></li>
+    <li>Найдите массив <code>accessCodeHashes</code></li>
+    <li>Вставьте новый хэш строкой (в кавычках, через запятую)</li>
+    <li>Сохраните файл и закоммитьте на GitHub — код заработает на сайте</li>
+  </ol>
+
+  <h2>Пример вставки в data.js</h2>
+  <div class="preview" id="preview">accessCodeHashes: [
+  "уже_существующий_хэш...",
+  "новый_хэш_который_вы_только_что_сгенерировали"  ←← сюда
+]</div>
+</div>
+
+<script>
+const input = document.getElementById('codeInput');
+const out = document.getElementById('output');
+const btn = document.getElementById('copyBtn');
+const msg = document.getElementById('copiedMsg');
+let lastHash = '';
+
+async function sha256(text){
+  const buf = new TextEncoder().encode(text.trim().toUpperCase());
+  const h = await crypto.subtle.digest('SHA-256', buf);
+  return Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+async function update(){
+  const code = input.value.trim();
+  if(!code){ out.innerHTML = '<em style="color:#6B5D57;">Здесь появится хэш…</em>'; lastHash=''; return; }
+  const hash = await sha256(code);
+  lastHash = hash;
+  out.innerHTML = '<strong>Хэш:</strong><br/>' + hash;
+}
+
+input.addEventListener('input', update);
+
+btn.addEventListener('click', async () => {
+  if(!lastHash) return;
+  await navigator.clipboard.writeText('"' + lastHash + '"');
+  msg.style.display = 'inline';
+  setTimeout(()=>{ msg.style.display='none'; }, 2000);
+});
+</script>
+</body>
+</html>

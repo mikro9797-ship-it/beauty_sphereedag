@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+
+# Node (если когда-нибудь добавите)
+node_modules/
+package-lock.json
+
+# Большие исходники Figma — оставляем, но игнорируем тяжёлые ассеты, если появятся
+figma-source/node_modules/
+figma-source/dist/
