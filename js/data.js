@@ -24,7 +24,8 @@ window.SITE = {
     "b247a5a4c3d4d2fe605196797de1e5f469966dd31ed4c4f41213911cc360e1dd",
     "9cd5659e88b31203c6441f9db5218d19ddb270d8409239530282760f7e692ae3",
     "bdf511bb45cc2320238d20271e8bdc2565dbbab5fa67f1118dac35812a4f6809",
-    "4ff006ca6b88e752f08cb7881714505ceb3d2079eea432acfda8e158e0d1d82e"  // DEMO — также удалите перед продакшеном
+    "4ff006ca6b88e752f08cb7881714505ceb3d2079eea432acfda8e158e0d1d82e", // DEMO — удалить перед продакшеном
+    "601a68fa5cebbef76face08c4a153ffea5dc10271ef1dc44e95de01f0ac0d8f1"  // личный код Салимат
   ]
 };
 
