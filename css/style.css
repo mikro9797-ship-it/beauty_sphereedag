@@ -277,11 +277,16 @@ main { flex: 1; padding-top: var(--header-h); }
 
 .hero-visual { position: relative; }
 .hero-visual .img {
-  aspect-ratio: 4/3;
+  aspect-ratio: 4/5;                 /* Instagram-афиша целиком */
   overflow: hidden;
-  background: var(--muted-bg);
+  background: var(--white);
+  border: 1px solid var(--border);
+  max-height: 640px;                 /* чтобы не был слишком высоким */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.hero-visual .img img { width: 100%; height: 100%; object-fit: cover; }
+.hero-visual .img img { width: 100%; height: 100%; object-fit: contain; }
 .hero-stat {
   position: absolute;
   bottom: -32px; left: -32px;
@@ -490,6 +495,11 @@ main { flex: 1; padding-top: var(--header-h); }
 .seminar-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
 .seminar-card .img-wrap { aspect-ratio: 16/10; overflow: hidden; background: var(--muted-bg); }
 .seminar-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+
+/* Афиша-семинар: только фото + кнопка WhatsApp (без текста) */
+.seminar-card--poster .img-wrap { aspect-ratio: 4/5; background: var(--white); }
+.seminar-card--poster .img-wrap img { object-fit: contain; padding: 8px; }
+.seminar-card--poster .body--minimal { padding: 18px; }
 .seminar-card:hover img { transform: scale(1.05); }
 .seminar-card .body { padding: 28px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
 .seminar-card .tags { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -892,7 +902,7 @@ main { flex: 1; padding-top: var(--header-h); }
   .hero p { font-size: 15px; margin-bottom: 28px; }
   .hero-actions { gap: 16px; }
   .hero-actions .btn { padding: 12px 20px; font-size: 11px; }
-  .hero-visual .img { aspect-ratio: 4/3; }
+  .hero-visual .img { aspect-ratio: 4/5; max-height: 480px; }
   .hero-stat {
     position: static;
     margin-top: 12px;
