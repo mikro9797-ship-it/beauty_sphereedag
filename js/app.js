@@ -225,7 +225,7 @@
             </div>
           </div>
           <div class="hero-visual">
-            <div class="img"><img alt="BEAUTY SPHERE — Professional Cosmetics" src="https://res.cloudinary.com/dzxnhu5r4/image/upload/q_auto,f_auto,w_1400/v1778620935/IMG_0860_bduvnm.jpg"/></div>
+            <div class="img"><img alt="BEAUTY SPHERE — Professional Cosmetics" src="https://res.cloudinary.com/dzxnhu5r4/image/upload/q_auto,f_auto,w_1400/v1781966699/5d8e0bfd-cffb-43d8-b1c2-19510184d85f_vnqxfz.jpg"/></div>
             <div class="hero-stat">
               <span class="num">15+</span>
               <span class="lbl">Brands</span>
@@ -500,20 +500,35 @@
   }
 
   function seminarCardHTML(s) {
+    // Если у семинара нет текста (только фото) — отображаем большую афишу с WhatsApp-кнопкой
+    const hasText = (s.title && s.title.trim()) || (s.description && s.description.trim()) ||
+                    (s.lecturer && s.lecturer.trim()) || (s.date && s.date.trim());
+    if (!hasText) {
+      return `
+        <article class="seminar-card seminar-card--poster" data-sem="${s.id}">
+          <div class="img-wrap img-wrap--full"><img src="${s.image}" alt="Афиша семинара" loading="lazy" /></div>
+          <div class="body body--minimal">
+            <a class="btn btn-wa" href="${seminarWaLinkSimple()}" target="_blank" rel="noopener" style="width:100%; justify-content:center;">
+              <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.5 8.5 3.5 15.4c0 2.5.7 4.8 2 6.9L3 29l6.9-2.4c2 1.1 4.3 1.7 6.6 1.7 7 0 12.5-5.5 12.5-12.4 0-3.3-1.3-6.4-3.7-8.8C22.4 4.3 19.3 3 16 3Z"/></svg>
+              Узнать подробности
+            </a>
+          </div>
+        </article>
+      `;
+    }
+    // Полноценная карточка семинара
+    const tags = [s.format, s.date, s.city].filter(x => x && x.trim());
+    const lecturerLine = [s.lecturer, s.duration].filter(x => x && x.trim()).join(' · ');
     return `
       <article class="seminar-card" data-sem="${s.id}">
         <div class="img-wrap"><img src="${s.image}" alt="${escapeHtml(s.title)}" loading="lazy" /></div>
         <div class="body">
-          <div class="tags">
-            <span class="tag tag-pill">${escapeHtml(s.format)}</span>
-            <span class="tag">${escapeHtml(s.date)}</span>
-            <span class="tag">${escapeHtml(s.city)}</span>
-          </div>
-          <h3>${escapeHtml(s.title)}</h3>
-          <p class="lecturer">Лектор: ${escapeHtml(s.lecturer)} · ${escapeHtml(s.duration)}</p>
-          <p style="margin:0;color:var(--muted-fg);font-size:14px;line-height:1.6;">${escapeHtml(s.description)}</p>
+          ${tags.length ? `<div class="tags">${tags.map((t,i) => `<span class="tag${i===0 ? ' tag-pill' : ''}">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
+          ${s.title ? `<h3>${escapeHtml(s.title)}</h3>` : ''}
+          ${lecturerLine ? `<p class="lecturer">${s.lecturer ? 'Лектор: ' : ''}${escapeHtml(lecturerLine)}</p>` : ''}
+          ${s.description ? `<p style="margin:0;color:var(--muted-fg);font-size:14px;line-height:1.6;">${escapeHtml(s.description)}</p>` : ''}
           <div class="meta">
-            <span class="price">${fmt(s.price)}</span>
+            <span class="price">${s.price > 0 ? fmt(s.price) : ''}</span>
             <a class="btn btn-wa" href="${seminarWaLink(s)}" target="_blank" rel="noopener">
               <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.5 8.5 3.5 15.4c0 2.5.7 4.8 2 6.9L3 29l6.9-2.4c2 1.1 4.3 1.7 6.6 1.7 7 0 12.5-5.5 12.5-12.4 0-3.3-1.3-6.4-3.7-8.8C22.4 4.3 19.3 3 16 3Z"/></svg>
               Записаться
@@ -522,6 +537,11 @@
         </div>
       </article>
     `;
+  }
+
+  function seminarWaLinkSimple() {
+    const text = `Здравствуйте! Расскажите подробнее про семинар.`;
+    return `https://wa.me/${window.SITE.phoneRaw}?text=${encodeURIComponent(text)}`;
   }
 
   function seminarWaLink(s) {
