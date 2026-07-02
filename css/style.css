@@ -277,16 +277,22 @@ main { flex: 1; padding-top: var(--header-h); }
 
 .hero-visual { position: relative; }
 .hero-visual .img {
-  aspect-ratio: 4/5;                 /* Instagram-афиша целиком */
+  /* Без фиксированного соотношения — контейнер тянется по натуральной высоте фото */
   overflow: hidden;
   background: var(--white);
   border: 1px solid var(--border);
-  max-height: 640px;                 /* чтобы не был слишком высоким */
+  max-height: 700px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.hero-visual .img img { width: 100%; height: 100%; object-fit: contain; }
+.hero-visual .img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 700px;
+  object-fit: contain;               /* фото показывается ЦЕЛИКОМ, без обрезки */
+}
 .hero-stat {
   position: absolute;
   bottom: -32px; left: -32px;
@@ -902,7 +908,8 @@ main { flex: 1; padding-top: var(--header-h); }
   .hero p { font-size: 15px; margin-bottom: 28px; }
   .hero-actions { gap: 16px; }
   .hero-actions .btn { padding: 12px 20px; font-size: 11px; }
-  .hero-visual .img { aspect-ratio: 4/5; max-height: 480px; }
+  .hero-visual .img { max-height: 480px; }
+  .hero-visual .img img { max-height: 480px; }
   .hero-stat {
     position: static;
     margin-top: 12px;
