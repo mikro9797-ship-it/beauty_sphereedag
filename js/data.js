@@ -19,13 +19,7 @@ window.SITE = {
   // Чтобы добавить новый код: откройте /tools/hash-code.html, введите код,
   // скопируйте полученный хэш и добавьте сюда строкой.
   accessCodeHashes: [
-    "88364b264b0c7446f440a4103f1f5e4f1d466be69bac5d0e52e57893b00ba501", // (старый демо-хэш — удалите перед запуском в продакшен)
-    "57ef0b5eadfd258acac65b2a6d7881841aad67cb3a8cdad2152a24b16acd1649",
-    "b247a5a4c3d4d2fe605196797de1e5f469966dd31ed4c4f41213911cc360e1dd",
-    "9cd5659e88b31203c6441f9db5218d19ddb270d8409239530282760f7e692ae3",
-    "bdf511bb45cc2320238d20271e8bdc2565dbbab5fa67f1118dac35812a4f6809",
-    "4ff006ca6b88e752f08cb7881714505ceb3d2079eea432acfda8e158e0d1d82e", // DEMO — удалить перед продакшеном
-    "601a68fa5cebbef76face08c4a153ffea5dc10271ef1dc44e95de01f0ac0d8f1"  // личный код Салимат
+    "82b87b56b096bcf4be784d993717c10443d843ebc880e4dae7cd5d049240d451"  // 0210
   ]
 };
 
