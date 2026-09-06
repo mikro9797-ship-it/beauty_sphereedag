@@ -225,7 +225,7 @@
             </div>
           </div>
           <div class="hero-visual">
-            <div class="img"><img alt="BEAUTY SPHERE — Professional Cosmetics" src="https://res.cloudinary.com/dzxnhu5r4/image/upload/q_auto,f_auto,w_1400/v1781966699/5d8e0bfd-cffb-43d8-b1c2-19510184d85f_vnqxfz.jpg"/></div>
+            <div class="img"><img alt="BEAUTY SPHERE — Professional Cosmetics" src="https://i.postimg.cc/jjznGW3Q/PHOTO-2026-09-04-16-26-49.jpg"/></div>
             <div class="hero-stat">
               <span class="num">15+</span>
               <span class="lbl">Brands</span>
